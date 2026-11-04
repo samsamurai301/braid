@@ -1,0 +1,118 @@
+/* Fonts: the product bundles Archivo, IBM Plex Sans and IBM Plex Mono as local files (SIL OFL) and declares them with @font-face.
+   The design-system previews load them from Google Fonts; that @import is deliberately left out of this copy (no remote requests). */
+
+/* Braid components. Class prefix bd-. Every colour, length and radius is a token from tokens.json. */
+
+.bd-stage { font-family: var(--font-sans); color: var(--ink); background: var(--surface); padding: var(--space-4); display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: flex-start; }
+.bd-stage--col { flex-direction: column; }
+.bd-mono { font-family: var(--font-mono); }
+.bd-muted { color: var(--ink-muted); }
+.bd-faint { color: var(--ink-faint); }
+
+/* Focus: one ring everywhere */
+.bd-btn:focus-visible, .bd-lens:focus-visible, .bd-inbox:focus-visible, .bd-session:focus-visible, .bd-note:focus-visible { outline: var(--stroke-strong) solid var(--accent); outline-offset: 2px; }
+
+/* Button */
+.bd-btn { font: 600 12px/16px var(--font-sans); letter-spacing: .01em; display: inline-flex; align-items: center; gap: var(--space-2); height: 32px; padding: 0 var(--space-3); border-radius: var(--radius-md); border: 1px solid var(--line-strong); background: var(--surface-raised); color: var(--ink); cursor: pointer; }
+.bd-btn:hover { background: var(--surface-sunken); }
+.bd-btn--primary { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.bd-btn--primary:hover { background: var(--accent); filter: brightness(1.08); }
+.bd-btn--danger { color: var(--crit); border-color: var(--crit); }
+.bd-btn--ghost { border-color: transparent; background: transparent; }
+.bd-btn--sm { height: 26px; padding: 0 var(--space-2); }
+.bd-kbd { font: 500 11px/14px var(--font-mono); color: var(--ink-muted); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 0 var(--space-1); }
+.bd-btn--primary .bd-kbd { color: var(--on-accent); border-color: var(--on-accent); }
+
+/* Badge: status with a word, never colour alone */
+.bd-badge { font: 600 12px/16px var(--font-sans); display: inline-flex; align-items: center; gap: var(--space-1); padding: 2px var(--space-2); border-radius: var(--radius-pill); border: 1px solid var(--line-strong); color: var(--ink-muted); background: var(--surface-raised); }
+.bd-badge::before { content: ""; width: 7px; height: 7px; border-radius: var(--radius-pill); background: currentColor; }
+.bd-badge--ok { color: var(--ok); border-color: var(--ok); }
+.bd-badge--warn { color: var(--warn); border-color: var(--warn); }
+.bd-badge--crit { color: var(--crit); border-color: var(--crit); }
+.bd-badge--accent { color: var(--ink); border-color: var(--accent); background: var(--accent-soft); }
+.bd-badge--accent::before { background: var(--accent); }
+
+/* Evidence grade: strength shown by fill, letter always present */
+.bd-grade { font: 600 11px/1 var(--font-mono); display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: var(--radius-sm); color: var(--ink); border: var(--stroke-mark) solid var(--line-strong); background: var(--surface-raised); }
+.bd-grade--a { background: var(--ink); color: var(--surface-raised); border-color: var(--ink); }
+.bd-grade--b { border-width: var(--stroke-strong); border-color: var(--ink); }
+.bd-grade--c { border-color: var(--line-strong); }
+.bd-grade--d { border-style: dashed; color: var(--ink-muted); }
+.bd-grade--u { border-style: dotted; color: var(--ink-faint); }
+
+/* Authorship fills: colour plus pattern, so they never rely on hue alone */
+.bd-auth { display: inline-block; width: 14px; height: 14px; border-radius: var(--radius-sm); vertical-align: -2px; }
+.bd-auth--human { background: var(--human); }
+.bd-auth--ai { background-color: var(--ai); background-image: repeating-linear-gradient(135deg, var(--surface-raised) 0 1.5px, transparent 1.5px 5px); }
+.bd-auth--mixed { background-color: var(--mixed); background-image: radial-gradient(var(--surface-raised) 1px, transparent 1.6px); background-size: 5px 5px; }
+.bd-auth--unknown { background: transparent; box-shadow: inset 0 0 0 var(--stroke-mark) var(--unknown); }
+.bd-authkey { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-4); font: 400 13px/18px var(--font-sans); color: var(--ink-muted); }
+.bd-authkey span { display: inline-flex; align-items: center; gap: var(--space-2); }
+
+/* Provenance ribbon: one bar per file or PR, segments in reading order */
+.bd-ribbon { display: flex; height: 10px; border-radius: var(--radius-sm); overflow: hidden; background: var(--surface-sunken); gap: 1px; }
+.bd-ribbon > .bd-auth { height: 100%; width: auto; border-radius: 0; }
+.bd-ribbon-row { width: 100%; display: grid; grid-template-columns: minmax(0, 220px) minmax(0, 1fr) auto; gap: var(--space-3); align-items: center; font: 400 12px/16px var(--font-mono); color: var(--ink-muted); }
+
+/* Agent marker: tool monogram, ring shows state */
+.bd-agent { position: relative; display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: var(--radius-pill); font: 600 11px/1 var(--font-mono); color: var(--ink); background: var(--surface-raised); box-shadow: 0 0 0 var(--stroke-strong) var(--accent); }
+.bd-agent--waiting { box-shadow: 0 0 0 var(--stroke-strong) var(--warn); }
+.bd-agent--waiting::after { content: "!"; position: absolute; top: -6px; right: -6px; width: 14px; height: 14px; border-radius: var(--radius-pill); background: var(--warn); color: var(--surface-raised); font: 700 10px/14px var(--font-sans); text-align: center; }
+.bd-agent--done { box-shadow: 0 0 0 var(--stroke-mark) var(--line-strong); color: var(--ink-muted); }
+.bd-agent--conflict { box-shadow: 0 0 0 var(--stroke-strong) var(--crit); }
+.bd-agent-trail { stroke: var(--accent); stroke-width: var(--stroke-mark); fill: none; stroke-dasharray: 3 3; }
+
+/* Session card: one agent session in one worktree */
+.bd-session { width: 300px; display: grid; gap: var(--space-2); padding: var(--space-3); border-radius: var(--radius-md); border: 1px solid var(--line); background: var(--surface-raised); font: 400 13px/18px var(--font-sans); }
+.bd-session header { display: flex; align-items: center; gap: var(--space-2); }
+.bd-session h4 { margin: 0; font: 600 13px/18px var(--font-sans); flex: 1; }
+.bd-session .bd-where { font: 400 12px/16px var(--font-mono); color: var(--ink-muted); }
+.bd-session .bd-files { font: 400 12px/16px var(--font-mono); color: var(--ink); }
+.bd-session footer { display: flex; gap: var(--space-3); font: 400 12px/16px var(--font-mono); color: var(--ink-faint); }
+.bd-add { color: var(--ok); }
+.bd-del { color: var(--crit); }
+
+/* Inbox item: something waiting on a person */
+.bd-inbox { width: 360px; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--space-1) var(--space-3); padding: var(--space-3); border-bottom: 1px solid var(--line); background: var(--surface-raised); font: 400 13px/18px var(--font-sans); }
+.bd-inbox .bd-agent { grid-row: span 3; }
+.bd-inbox strong { font-weight: 600; }
+.bd-inbox .bd-ctx { font: 400 12px/16px var(--font-mono); color: var(--ink-muted); }
+.bd-inbox .bd-actions { display: flex; gap: var(--space-2); margin-top: var(--space-1); }
+
+/* Lens bar: segmented switcher plus legend */
+.bd-lensbar { display: inline-flex; padding: 2px; border-radius: var(--radius-pill); background: var(--surface-sunken); border: 1px solid var(--line); }
+.bd-lens { font: 600 12px/16px var(--font-sans); border: 0; background: transparent; color: var(--ink-muted); padding: 6px var(--space-3); border-radius: var(--radius-pill); cursor: pointer; }
+.bd-lens[aria-pressed="true"] { background: var(--surface-raised); color: var(--ink); box-shadow: inset 0 0 0 1px var(--line-strong); }
+.bd-legend { display: flex; align-items: center; gap: var(--space-2); font: 400 12px/16px var(--font-sans); color: var(--ink-muted); }
+.bd-legend i { display: block; width: 18px; height: 10px; }
+.bd-l1 { background: var(--lens-1); } .bd-l2 { background: var(--lens-2); } .bd-l3 { background: var(--lens-3); } .bd-l4 { background: var(--lens-4); } .bd-l5 { background: var(--lens-5); }
+
+/* Map: nested regions with label plates */
+.bd-map { position: relative; background: var(--surface-sunken); border-radius: var(--radius-md); padding: 6px; }
+.bd-region { position: absolute; border-radius: var(--radius-sm); box-shadow: inset 0 0 0 var(--stroke-hairline) var(--line); background: var(--region-a); }
+.bd-region--b { background: var(--region-b); }
+.bd-region.bd-l1 { background: var(--lens-1); } .bd-region.bd-l2 { background: var(--lens-2); } .bd-region.bd-l3 { background: var(--lens-3); } .bd-region.bd-l4 { background: var(--lens-4); } .bd-region.bd-l5 { background: var(--lens-5); }
+.bd-region--sel { box-shadow: inset 0 0 0 var(--stroke-strong) var(--accent); }
+.bd-region--overlap { box-shadow: inset 0 0 0 var(--stroke-strong) var(--warn); }
+.bd-plate { position: absolute; left: 4px; top: 4px; font: 500 11px/14px var(--font-sans); color: var(--ink); background: var(--surface-raised); border-radius: var(--radius-sm); padding: 1px 4px; white-space: nowrap; }
+.bd-plate--repo { font: 700 12px/16px var(--font-display); }
+
+/* Change class chips */
+.bd-change { font: 600 11px/16px var(--font-mono); display: inline-flex; gap: var(--space-1); align-items: center; padding: 1px var(--space-2); border-radius: var(--radius-sm); border: 1px solid var(--line-strong); color: var(--ink-muted); background: var(--surface-raised); }
+.bd-change--logic { color: var(--ink); border-color: var(--ink); }
+.bd-change--api { color: var(--crit); border-color: var(--crit); }
+.bd-change--format { border-style: dashed; }
+
+/* Risk item: one row of "look here first" */
+.bd-risk { width: 520px; display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: var(--space-1) var(--space-3); padding: var(--space-3); border-bottom: 1px solid var(--line); background: var(--surface-raised); font: 400 13px/18px var(--font-sans); }
+.bd-score { grid-row: span 2; display: grid; place-items: center; height: 28px; border-radius: var(--radius-pill); font: 700 13px/1 var(--font-display); color: var(--surface-raised); background: var(--ink); }
+.bd-risk .bd-why { display: flex; flex-wrap: wrap; gap: var(--space-1); }
+
+/* Intent note: a sticky note pinned to code */
+.bd-note { width: 260px; display: grid; gap: var(--space-2); padding: var(--space-3); border-radius: var(--radius-md); background: var(--accent-soft); border: 1px solid var(--accent); font: 400 13px/18px var(--font-sans); color: var(--ink); }
+.bd-note h4 { margin: 0; font: 600 14px/20px var(--font-sans); }
+.bd-note .bd-pin { font: 400 11px/14px var(--font-mono); color: var(--ink-muted); }
+.bd-note ul { margin: 0; padding: 0; list-style: none; display: grid; gap: var(--space-1); }
+.bd-note li::before { content: "\25A1\00a0"; color: var(--ink-muted); }
+.bd-note li.done::before { content: "\25A0\00a0"; color: var(--accent); }
+.bd-note--orphan { background: var(--surface-raised); border-style: dashed; border-color: var(--warn); }
