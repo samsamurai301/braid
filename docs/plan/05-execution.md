@@ -22,7 +22,7 @@ The three feature milestones (M1 to M3) overlap by a week each: the week you use
 
 *[Diagram: Roadmap · November 2026 to June 2027, to scale. See it in the doc: https://claude.ai/artifact/7u6PxvFDQcCgcdMtWjCHCQ]*
 
-The dashed line marks the MVP alpha. Everything to its left is private building; v1 then runs for three months to the public beta.
+The dashed line marks the MVP alpha. Everything to its left is building before any users; v1 then runs for three months to the public beta.
 
 ## Milestones
 
@@ -36,7 +36,7 @@ Each milestone ends with something you use on your own repos for at least a week
 | M1 Map | 16 Nov 2026 – 8 Jan 2027 | Braid Graph and stable IDs, workspace manifest and braid init, file-level living map, stable layout, three lenses, web UI and desktop shell, streaming protocol | You open the map daily for a week on Braid's own repo and one work codebase (the first week of test A2) |
 | M2 Fleet | 4 Jan – 12 Feb 2027 | Agent lanes, approval inbox, agents on the map, collision radar on the map, worktree per task in the UI, launch an agent with a brief, activity stream | Two agents run a full day across two repos with no terminal visit needed just to check status |
 | M3 Review and polish | 8 Feb – 12 Mar 2027 | Change story first version, provenance blame view, cross-repo package links, fly-to search, snapshot export, MCP read tools, install and uninstall, privacy defaults, performance budgets | Every MVP acceptance criterion in Phase 2 passes; ten real PRs reviewed for test A4 |
-| MVP alpha | from 15 Mar 2027 | Repo goes public without an announcement; install script and a Homebrew tap; ten to fifteen design partners via Discord, enough to reach the gate | Alpha gate: 10 workspaces completing the loop each week |
+| MVP alpha | from 15 Mar 2027 | No announcement yet; install script and a Homebrew tap; ten to fifteen design partners via Discord, enough to reach the gate | Alpha gate: 10 workspaces completing the loop each week |
 | v1 build | 15 Mar – 11 Jun 2027 | Intent canvas, pinned notes, criteria, send with visual context, semantic diff and blast radius in the UI, Braid timeline, why-links, Cursor, VS Code extension, Braid cards, public atlas | The core journey from Phase 2 runs end to end, all thirteen steps |
 | Public beta | from 14 Jun 2027 | Show HN, VS Code Marketplace and Open VSX, Homebrew | Beta gate: 500 workspaces completing the loop each week, before v2 starts |
 
@@ -46,7 +46,7 @@ Fourteen tasks, in this order. The first three take an evening; the spike and th
 
 **Foundations (M0)**
 
-- [ ] Import v0.1 into `~/Documents/experiments/Braid` from `braid.bundle`, keeping its history, and push to `samsamurai301/braid` (private for now)
+- [ ] Import v0.1 into `~/Documents/experiments/Braid` from `braid.bundle`, keeping its history, and push to `samsamurai301/braid` (public, not announced)
 - [ ] Check that the `CLAUDE.md` and the `docs/` folder written today are in the repo, and commit them
 - [ ] Turn on CI: `cargo fmt --check`, `cargo clippy -D warnings`, `cargo test`, `cargo-deny` for Rust licences, plus a JavaScript licence checker for npm packages
 - [ ] Add the licence files, a DCO check, `CONTRIBUTING.md` and `SECURITY.md`
@@ -91,13 +91,13 @@ Braid is built the way it wants others to work: you plan and review, agents writ
 
 ## Open-source launch plan
 
-The repo opens quietly with the alpha and is announced with the beta, so the first public impression is a product that works, while the build itself is visible from March.
+The repo is public from the start but announced only with the beta, so the first public impression is a product that works, while the build itself is visible all along.
 
 | When | What happens | Why then |
 | --- | --- | --- |
-| Now to March | Private repo; short build-in-public posts with screenshots and clips of the map | Visuals are Braid's best marketing; the audience grows before there is anything to install |
-| Before going public | Trademark search for the final name, word mark filed at the DPMA or EUIPO, trademark policy, code of conduct, AI-contribution policy | Naming disputes and floods of low-quality AI PRs are known failure modes |
-| From the alpha (March) | Repo public with an "early" README; Discord with design partners in small waves; good first issues labelled | Real feedback without a launch-day spike the product can't hold |
+| Now to March | Public repo, not announced; short build-in-public posts with screenshots and clips of the map | Visuals are Braid's best marketing; the audience grows before there is anything to install |
+| Before the alpha | Trademark search for the final name, word mark filed at the DPMA or EUIPO, trademark policy, code of conduct, AI-contribution policy | Naming disputes and floods of low-quality AI PRs are known failure modes |
+| From the alpha (March) | "Early" README; Discord with design partners in small waves; good first issues labelled | Real feedback without a launch-day spike the product can't hold |
 | Beta launch (June) | Show HN where open-sourcing is the story; public atlas of well-known repos; VS Code Marketplace and Open VSX; Homebrew | A launch moment needs something people can try in five minutes and pictures they want to share |
 | After the beta | A launch week every quarter, shipping one visible feature a day; lens and adapter API opened to contributors | Repeatable moments keep attention; plugins turn users into contributors |
 
